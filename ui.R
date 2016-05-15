@@ -5,11 +5,12 @@
 #
 
 library(shiny)
+library(shinythemes)
 
 shinyUI(fluidPage(
-
-  # Application title
+  theme = shinytheme("flatly"),
   titlePanel("Reddit Analysis"),
+  img(src='title_troy.png', align = "center", width = 200),
 
   # Sidebar
   sidebarLayout(
@@ -19,14 +20,14 @@ shinyUI(fluidPage(
       textInput("user", "User:", value = "",
                 placeholder = "e.g. TroyHernandez"),
       sliderInput("threshold", "Upvote Threshold:",
-                  min = 1,  max = 50, value = 10),
+                  min = 1,  max = 50, value = 3),
       actionButton("action2", "Engage!")
     ),
 
     # Show a plot or two
     mainPanel(
-      plotOutput("wordCloud"),
-      plotOutput("submissionTime")
+      plotOutput("submissionTime", width = "75%", height = "300px"),
+      plotOutput("wordCloud", width = "75%", height = "300px")
     )
   )
 ))
